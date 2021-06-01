@@ -29,6 +29,26 @@ public class LinkedListDemo {
          * nodes.
          * 
          */
+    	
+    	LinkedList<String> myList = new LinkedList<String>();
+    	
+    	myList.add("Hello");
+    	myList.add("World!");
+    	myList.add("League");
+    	myList.add("coding");
+    	myList.add("Java");
+    	
+    	Node<String> head = myList.getHead();
+    	Node<String> currentNode = head;
+    	
+    	while (!currentNode.equals(myList.getTail())) {
+    		
+    		currentNode.setValue(currentNode.getValue().toUpperCase());
+    		System.out.println(currentNode.getValue());
+    		currentNode = currentNode.getNext();
+    	}
+    	currentNode.setValue(currentNode.getValue().toUpperCase());
+    	System.out.println(currentNode.getValue());
 
     }
 
