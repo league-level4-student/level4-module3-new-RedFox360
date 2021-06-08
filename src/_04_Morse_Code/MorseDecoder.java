@@ -10,7 +10,7 @@ public class MorseDecoder {
 
         MorseDecoder md = new MorseDecoder();
         md.initialize();
-        md.decode();
+        md.decode(new String[] {"-.--", "---", "..-", ".-", ".-.", ".", ".-", "--", ".-", "--..", "..", "-.", "--."});
 
     }
 
@@ -57,12 +57,17 @@ public class MorseDecoder {
      * After you have implemented the compareTo method in MorseCode see if you
      * can decode the following message using the binary tree:
      * 
-     * -.-- --- ..- .- .-. . .- -- .- --.. .. -. --.
+     * 
      * 
      * Then try creating your own morse code message and decoding it!
      */
-    void decode() {
-
+    void decode(String[] message) {
+    	String decoded="";
+    	for ( String word : message) {
+    		decoded += mcTree.search(new MorseCode(word)).getValue();
+    	}
+    	
+    	System.out.println(decoded);
     }
 
 }

@@ -34,8 +34,17 @@ public class MorseCode implements Comparable<MorseCode> {
      */
     @Override
     public int compareTo(MorseCode o) {
+    	int comparison = 0;
 
-       return 0;
+        if (position == coded.length()) {
+            return 0;
+        } else if (coded.charAt(position) == '.') {
+            comparison = -1;
+        } else if (coded.charAt(position) == '-') {
+            comparison = 1;
+        }
+
+        return comparison;
        
     }
 
