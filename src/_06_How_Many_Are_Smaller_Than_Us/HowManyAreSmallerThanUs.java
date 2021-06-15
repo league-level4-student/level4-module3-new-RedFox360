@@ -1,9 +1,4 @@
 package _06_How_Many_Are_Smaller_Than_Us;
-
-import java.util.ArrayList;
-
-import _03_Intro_to_Binary_Trees.Node;
-import _04_Morse_Code.MorseCode;
 import _05_Intro_to_AVL_Trees.AVLNode;
 import _05_Intro_to_AVL_Trees.AVLTree;
 
@@ -27,31 +22,28 @@ public class HowManyAreSmallerThanUs {
 
 	public int[] howManyAreSmallerThanUs(int[] nums, AVLTree<Integer> avlTree) {
 		int[] counts = new int[nums.length];
-		for (int i = 0; i < nums.length; i++) {
-			avlTree.recursiveSearch(avlTree.getRoot(), )
-//			counts[i] = 0;
-//			for (int n : nums) {
-//				if (n < nums[i]) {
-//					counts[i] = counts[i] + 1;
-//				}
-//			}
+		for (int i = 0; i < counts.length; i++) {
+			counts[i]=count(avlTree.getRoot(), nums[i], 0);
 		}
 		return counts;
 	}
-	
-    protected Integer recursiveSearch(AVLNode<Integer> current, Integer value) {
-    	int count = 0;
-        if (current == null) {
-            return null;
-        } else if (value < current.getValue()) {
-            count += 1;
-        } else if (value.compareTo(current.getValue()) < 0) {
-            return recursiveSearch(current.getLeft(), value);
-        } else {
-            return recursiveSearch(current.getRight(), value);
-        }
-        return count;
-
+    protected int count(AVLNode<Integer> current, int value, int c) {
+    	
+    	if (current == null) return c;
+    	if (current.getValue() >= value) {
+    		c=count(current.getLeft(), value, c);
+    		
+    		
+    		
+    		
+    	} else {
+    		c += 1;
+    		c=count(current.getLeft(), value, c);
+    		c=count(current.getRight(), value, c);
+    		
+    	}
+    	
+    	return c;
     }
 
 }
